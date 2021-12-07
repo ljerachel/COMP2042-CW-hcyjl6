@@ -21,14 +21,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
-// MVC - controller
+
+// MVC controller
+// the actual game
 
 public class GameFrame extends JFrame implements WindowFocusListener {
 
     private static final String DEF_TITLE = "Brick Destroy";
 
+
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
+    private scoreboard scoreboard;
 
     private boolean gaming;
 
@@ -43,12 +47,14 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
         homeMenu = new HomeMenu(this,new Dimension(450,300));
 
+        scoreboard = new scoreboard(this);
+
         this.add(homeMenu,BorderLayout.CENTER);
 
         this.setUndecorated(true);
 
-
     }
+
 
     public void initialize(){
         this.setTitle(DEF_TITLE);
@@ -58,6 +64,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.setVisible(true);
     }
 
+    /**
+     *
+     */
     public void enableGameBoard(){
         this.dispose();
         this.remove(homeMenu);
@@ -68,6 +77,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+
+
+
+
 
     private void autoLocate(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
