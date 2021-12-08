@@ -214,7 +214,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             if (!b.isBroken())   // false (not broken draw the brick)
                 drawBrick(b, g2d);
 
-        drawPlayer(wall.player, g2d);
+        drawPlayer(Player.getInstance(), g2d);
 
         if (showPauseMenu)
             drawMenu(g2d);
@@ -273,7 +273,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
 
-    //HELP PLS
+    
 
     private void drawLifeIcon( Graphics2D g2d ,Wall wall ) // add this parameter
     {
@@ -455,10 +455,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     public void keyPressed(KeyEvent keyEvent) {
         switch(keyEvent.getKeyCode()){
             case KeyEvent.VK_A:
-                wall.player.moveLeft();
+                Player.getInstance().moveLeft();
                 break;
             case KeyEvent.VK_D:
-                wall.player.movRight();
+                Player.getInstance().movRight();
                 break;
             case KeyEvent.VK_ESCAPE:
                 showPauseMenu = !showPauseMenu;
@@ -476,13 +476,13 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 if(keyEvent.isAltDown() && keyEvent.isShiftDown())
                     debugConsole.setVisible(true);
             default:
-                wall.player.stop();
+                Player.getInstance().stop();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        wall.player.stop();
+        Player.getInstance().stop();
     }
 
     @Override

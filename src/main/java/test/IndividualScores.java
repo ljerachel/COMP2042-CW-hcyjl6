@@ -12,9 +12,7 @@ public class IndividualScores implements Comparable{
 
     public IndividualScores( String name , int highscore)
     {
-      /*  ranking += 1;
 
-        this.ranking= ranking;*/
         this.name = name;
         this.highscore = highscore;
 
@@ -35,8 +33,6 @@ public class IndividualScores implements Comparable{
         return name;
     }
 
- /*   public int getRanking() {
-        return ranking;
-    }*/
+
 
 }

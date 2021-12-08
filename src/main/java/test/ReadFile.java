@@ -22,7 +22,7 @@ public class ReadFile {
     }
 
     private static ArrayList<IndividualScores> aList = new ArrayList<IndividualScores>();
-    //private static ArrayList<IndividualScores> aList = new ArrayList<IndividualScores>();
+
     String row  = "";
 
     public ReadFile() throws IOException {

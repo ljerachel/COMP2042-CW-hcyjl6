@@ -30,15 +30,13 @@ public class Player {
 
     private Rectangle playerFace;
 
-    public Point getBallPoint() {
-        return ballPoint;
-    }
+
 
     private Point ballPoint;
     private int moveAmount;
     private int min;
     private int max;
-
+    private static Player playerInstance  ;
 
     /**
      * @param ballPoint starting position of the ball
@@ -46,7 +44,7 @@ public class Player {
      * @param height height of the player's rectangle
      * @param container the area that can allow movement of the player's rectangle
      */
-    public Player(Point ballPoint,int width,int height,Rectangle container) {
+    private Player(Point ballPoint,int width,int height,Rectangle container) {
         this.ballPoint = ballPoint;
         moveAmount = 0;
         playerFace = makeRectangle(width, height);
@@ -54,6 +52,23 @@ public class Player {
         max = min + container.width - width;
 
     }
+
+    public static Player getInstance() {
+        if (playerInstance == null) {
+            getInstance();
+        }
+        return playerInstance;
+
+    }
+    public static Player getInstance(Point ballpos,int width, int height, Rectangle container)
+    {
+        if (playerInstance == null)
+        {
+            playerInstance = new Player(ballpos,width,height,container);
+        }
+        return playerInstance;
+    }
+
 
     /**
      * @param width width of the player's rectangle

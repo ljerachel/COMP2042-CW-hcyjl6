@@ -44,7 +44,7 @@ public class Wall {
 
     BallFactory BallFactory ;
     Ball ball;
-    Player player;
+    //Player player;
     brickFactory brickFactory;
 
 
@@ -103,8 +103,9 @@ public class Wall {
 
         ball.setSpeed(speedX,speedY);
 
-        player = new Player((Point) ballPos.clone(),150,10, drawArea);
+        //player = new Player((Point) ballPos.clone(),150,10, drawArea);
 
+        Player.getInstance((Point)ballPos.clone(),150,10,drawArea) ;
 
         area = drawArea;
 
@@ -272,7 +273,7 @@ public class Wall {
      * @param ballPos position of the ball
      */
     private void makeBall(Point2D ballPos){
-        BallFactory = new BallFactory(); 
+        BallFactory = new BallFactory();
         ball = BallFactory.getBallType("RUBBER",ballPos);
     }
 
@@ -297,7 +298,8 @@ public class Wall {
      * consists of the movements of both player rectangle and ball
      */
     public void move(){
-        player.move();
+        //player.move();
+        Player.getInstance().move();
         ball.move();
     }
 
@@ -307,7 +309,7 @@ public class Wall {
      *
      */
     public void findImpacts(){
-        if(player.impact(ball)){
+        if(Player.getInstance().impact(ball)){
             ball.reverseY();
 
         }
@@ -389,7 +391,7 @@ public class Wall {
      * reset the ball to first position
      */
     public void ballReset(){
-        player.moveTo(startPoint);
+        Player.getInstance().moveTo(startPoint);
         ball.moveTo(startPoint);
         int speedX,speedY;
             speedX = 8;
