@@ -75,14 +75,15 @@ class WallTest {
             assertFalse(wall.isDone());
         }
 
-    //@Test
-        /*void nextLevel () {
+      /*  @Test
+        void nextLevel () {
             wall.bricks =
-
         }*/
 
         @Test
         void hasLevel () {
+
+            assertTrue(wall.hasLevel());
         }
 
         @Test

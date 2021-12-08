@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
 
-import org.junit.Assert ;
+//import org.junit.Assert ;
 import org.junit.jupiter.api.Test;
 
 
@@ -18,7 +18,7 @@ class BallTest {
     Ball ball ;
 
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testMove() {
         center = new Point2D.Double(100, 20);
 
@@ -28,7 +28,7 @@ class BallTest {
         assertEquals(new Point(105,25),ball.getPosition() );
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void testSetSpeed() {
         center = new Point2D.Double(100, 2);
         Ball ball = new RubberBall(center);
