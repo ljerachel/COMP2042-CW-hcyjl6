@@ -1,27 +1,28 @@
-/*package test;
+package test;
 
-public class brickFactory extends AbstractFactory {
-    @Override
-    public Brick getBrickType(String brickType)
+import java.awt.*;
+
+public class brickFactory {
+    public Brick getBrickType(String brickType, Point pos, Dimension size)
     {
-        if (brickType=="Cement")
+        if (brickType.equalsIgnoreCase("CEMENT"))
         {
-            return new CementBrick();
+            return new CementBrick(pos,size);
         }
-        else if (brickType=="Clay")
+        else if (brickType=="CLAY")
         {
-            return new ClayBrick();
+            return new ClayBrick(pos, size);
         }
-        else if (brickType=="Stone")
+        else if (brickType=="STONE")
         {
-            return new StoneBrick();
+            return new StoneBrick(pos,size);
         }
 
-        else if (brickType=="Steel")
+        else if (brickType=="STEEL")
         {
-            return new SteelBrick();
+            return new SteelBrick(pos,size);
         }
 
         return null ;
     }
-}*/
+}

@@ -42,9 +42,10 @@ public class Wall {
     Brick[] bricks;
 
 
+    BallFactory BallFactory ;
     Ball ball;
     Player player;
-
+    brickFactory brickFactory;
 
 
     private boolean lifeCollected = false  ;
@@ -271,7 +272,8 @@ public class Wall {
      * @param ballPos position of the ball
      */
     private void makeBall(Point2D ballPos){
-        ball = new RubberBall(ballPos);
+        BallFactory = new BallFactory(); 
+        ball = BallFactory.getBallType("RUBBER",ballPos);
     }
 
     /**
@@ -486,19 +488,21 @@ public class Wall {
      * @return brick chosen
      */
     private Brick makeBrick(Point point, Dimension size, int type){
+        brickFactory = new brickFactory() ;
         Brick out;
+
         switch(type){
             case CLAY:
-                out = new ClayBrick(point,size);
+                out = brickFactory.getBrickType("CLAY",point,size);
                 break;
             case STEEL:
-                out = new SteelBrick(point,size);
+                out = brickFactory.getBrickType("STEEL",point,size);
                 break;
             case CEMENT:
-                out = new CementBrick(point, size);
+                out = brickFactory.getBrickType("CEMENT",point,size);
                 break;
             case STONE :
-                out = new StoneBrick(point,size);
+                out = brickFactory.getBrickType("STONE",point,size);
                 break;
             default:
                 throw  new IllegalArgumentException(String.format("Unknown Type:%d\n",type));
@@ -526,13 +530,13 @@ public class Wall {
     }
 
 
-    public void setArea(Rectangle area) {
+   /* public void setArea(Rectangle area) {
         this.area = area;
-    }
+    }*/
 
-    public Rectangle getArea() {
+   /* public Rectangle getArea() {
         return area;
-    }
+    }*/
 
     public void setBrickCount(int brickCount) {
         this.brickCount = brickCount;
