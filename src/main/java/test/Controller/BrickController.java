@@ -25,8 +25,6 @@ abstract public class BrickController {
     {
         brickView = new BrickView();
         brickModel = new BrickModel(name, pos, size, border, inner, strength );
-        //brickFace = brickModel.getBrickFace();
-
         brickFace = makeBrickFace(pos,size);
 
     }
@@ -111,6 +109,8 @@ abstract public class BrickController {
     public int getStrength(){
         return brickModel.getStrength();
     }
+
+
     public Color getBorderColor(){
         return brickModel.getBorderColor();
     }

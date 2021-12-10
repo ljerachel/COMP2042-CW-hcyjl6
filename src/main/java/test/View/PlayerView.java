@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class PlayerView {
 
-    private void drawPlayer(PlayerController p, Graphics2D g2d) {
+    public void drawPlayer(PlayerController p, Graphics2D g2d) {
         Color tmp = g2d.getColor();
 
         Shape s = p.getPlayerFace();

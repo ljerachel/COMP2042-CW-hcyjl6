@@ -218,9 +218,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             {
                 System.out.println("not broken");
                 b.brickView.drawBrick(b, g2d);
-                //drawBrick(b,g2d);
             }
-        drawPlayer(PlayerController.getInstance(), g2d);
+
+
+        PlayerController.getInstance().playerView.drawPlayer(PlayerController.getInstance(),g2d);
 
         if (showPauseMenu)
             drawMenu(g2d);
@@ -250,33 +251,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.fillRect(0, 0, getWidth(), getHeight());
         g2d.setColor(tmp);
     }
-
-    private void drawBrick(BrickController brick, Graphics2D g2d) {
-        Color tmp = g2d.getColor();
-
-        g2d.setColor(brick.getInnerColor());
-        g2d.fill(brick.getBrick());
-
-        g2d.setColor(brick.getBorderColor());
-        g2d.draw(brick.getBrick());
-
-
-        g2d.setColor(tmp);
-    }
-
-   /* private void drawBall(Ball ball, Graphics2D g2d) {
-        Color tmp = g2d.getColor();
-
-        Shape s = ball.getBallFace();
-
-        g2d.setColor(ball.getInnerColor());
-        g2d.fill(s);
-
-        g2d.setColor(ball.getBorderColor());
-        g2d.draw(s);
-
-        g2d.setColor(tmp);
-    }*/
 
 
 

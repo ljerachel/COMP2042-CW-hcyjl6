@@ -55,7 +55,7 @@ class BrickTest {
         brick.setStrength(1) ;
         brick.setFullStrength(3);
         brick.repair();
-        assertEquals(3,brick.getStrength());
+        assertEquals(2,brick.getStrength());
     }
 
     @Test

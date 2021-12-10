@@ -37,22 +37,6 @@ public class PlayerModel {
 
         }
 
-    /*public static PlayerModel getInstance() {
-        if (playerInstance == null) {
-            getInstance();
-        }
-        return playerInstance;
-
-    }
-    public static PlayerModel getInstance(Point ballpos,int width, int height, Rectangle container)
-    {
-        if (playerInstance == null)
-        {
-            playerInstance = new PlayerModel(ballpos,width,height,container);
-        }
-        return playerInstance;
-    }*/
-
 
     /**
      * @param width width of the player's rectangle

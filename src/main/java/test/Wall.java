@@ -45,13 +45,7 @@ public class Wall {
     private Random rnd;
     private Rectangle area;
 
-    public BrickController[] getBricks() {
-        return bricks;
-    }
 
-    public void setBricks(BrickController[] bricks) {
-        this.bricks = bricks;
-    }
 
     BrickController[] bricks;
 
@@ -66,13 +60,6 @@ public class Wall {
     private BrickController[][] levels;
     private int level;
 
-    public boolean isShowWinningMsg() {
-        return showWinningMsg;
-    }
-
-    public void setShowWinningMsg(boolean showWinningMsg) {
-        this.showWinningMsg = showWinningMsg;
-    }
 
     private boolean showWinningMsg  = false  ;
 
@@ -565,6 +552,25 @@ public class Wall {
     public void setBrickCount(int brickCount) {
         this.brickCount = brickCount;
     }
+
+
+    public BrickController[] getBricks() {
+        return bricks;
+    }
+
+    public void setBricks(BrickController[] bricks) {
+        this.bricks = bricks;
+    }
+
+
+    public boolean isShowWinningMsg() {
+        return showWinningMsg;
+    }
+
+    public void setShowWinningMsg(boolean showWinningMsg) {
+        this.showWinningMsg = showWinningMsg;
+    }
+
 
 }
 

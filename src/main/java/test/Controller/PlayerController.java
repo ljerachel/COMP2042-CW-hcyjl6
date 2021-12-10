@@ -21,17 +21,15 @@ public class PlayerController {
     {
         playerView = new PlayerView();
         playerModel = new PlayerModel(ballPoint, width, height, container);
-       // playerInstance = PlayerController.getInstance(ballPoint, width, height, container);
-        //playerInstance = PlayerModel.getInstance(ballPoint, width, height, container);
         ballPoint = playerModel.getBallPoint();
         playerFace = playerModel.getPlayerFace();
         ballController = new RubberBall(ballPoint);  // not sure
     }
 
     public static PlayerController getInstance() {
-       /* if (playerInstance == null) {
+        if (playerInstance == null) {
             playerInstance = new PlayerController();
-        }*/
+        }
         return playerInstance;
 
     }

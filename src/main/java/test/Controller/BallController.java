@@ -14,9 +14,7 @@ abstract public class BallController {
 
 
     Point2D center;
-    Shape ballFace ;//= ballModel.getBallFace();
-    int speedX ;
-    int speedY;
+    Shape ballFace ;
 
     public BallController(Point2D center,int radius,Color inner, Color border  )
     {
@@ -44,24 +42,23 @@ abstract public class BallController {
     }
 
     public void setSpeed(int x,int y){
-        speedX = x;
-        speedY = y;
+        ballModel.setSpeed(x,y);
     }
 
 
     public void setXSpeed(int s){
-        speedX = s;
+        ballModel.setXSpeed(s);
     }
 
     public void setYSpeed(int s){
-        speedY = s;
+        ballModel.setYSpeed(s);
     }
 
 
     public void move(){
         center = ballModel.getCenter();
         RectangularShape tmp = (RectangularShape) ballFace;
-        center.setLocation((center.getX() + speedX),(center.getY() + speedY));
+        center.setLocation((center.getX() + ballModel.getSpeedX()),(center.getY() + ballModel.getSpeedY()));
         double w = tmp.getWidth();
         double h = tmp.getHeight();
 
@@ -91,7 +88,7 @@ abstract public class BallController {
 
     public Shape getBallFace4View()
     {
-        Shape s  = getBallFace();
+        Shape s  = ballFace;
         return s ;
     }
 
@@ -100,14 +97,16 @@ abstract public class BallController {
 
 
     public void reverseX(){
-        speedX *= -1;
+
+        setXSpeed(-getSpeedX());
     }
 
     /**
      * set the direction of the ball movement to the opposite (vertically)
      */
     public void reverseY(){
-        speedY *= -1;}
+        setYSpeed(-getSpeedY());
+    }
 
    public Point2D getPosition() {
        return ballModel.getCenter();
@@ -119,10 +118,6 @@ abstract public class BallController {
 
     public Color getInnerColor(){
         return ballModel.getInnerColor();
-    }
-
-    public Shape getBallFace(){
-        return ballFace;
     }
 
     private void setPoints(double width,double height){
@@ -145,11 +140,11 @@ abstract public class BallController {
     public Point2D getLeft(){return ballModel.getLeft();}
 
     public int getSpeedX(){
-        return speedX;
+        return ballModel.getSpeedX();
     }
 
     public int getSpeedY(){
-        return speedY;
+        return ballModel.getSpeedY();
     }
 
 
