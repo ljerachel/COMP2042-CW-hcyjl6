@@ -1,11 +1,13 @@
 package test;
 
+import test.Controller.BallController;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 
 public class BallFactory {
 
-    public Ball getBallType(String ballType, Point2D ballPos)
+    public BallController getBallType(String ballType, Point2D ballPos)
     {
         if(ballType == null)
             return null;

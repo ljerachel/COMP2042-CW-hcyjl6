@@ -1,5 +1,6 @@
 /*
  *  Brick Destroy - A simple Arcade video game
+ *
  *   Copyright (C) 2017  Filippo Ranza
  *
  *  This program is free software: you can redistribute it and/or modify
@@ -16,6 +17,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package test;
+
+import test.Controller.BallController;
+import test.Controller.BrickController;
+import test.Controller.PlayerController;
+import test.Model.PlayerModel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -39,17 +45,25 @@ public class Wall {
     private Random rnd;
     private Rectangle area;
 
-    Brick[] bricks;
+    public BrickController[] getBricks() {
+        return bricks;
+    }
+
+    public void setBricks(BrickController[] bricks) {
+        this.bricks = bricks;
+    }
+
+    BrickController[] bricks;
 
 
     BallFactory BallFactory ;
-    Ball ball;
-    //Player player;
+    BallController ball;
+    PlayerController player;
     brickFactory brickFactory;
 
 
     private boolean lifeCollected = false  ;
-    private Brick[][] levels;
+    private BrickController[][] levels;
     private int level;
 
     public boolean isShowWinningMsg() {
@@ -90,7 +104,7 @@ public class Wall {
         level = 0;
 
 
-
+        this.ball = getBall();
         ballCount = 3;
         ballLost = false;
 
@@ -103,9 +117,11 @@ public class Wall {
 
         ball.setSpeed(speedX,speedY);
 
-        //player = new Player((Point) ballPos.clone(),150,10, drawArea);
 
-        Player.getInstance((Point)ballPos.clone(),150,10,drawArea) ;
+
+        player = PlayerController.getInstance((Point)ballPos.clone(),150,10,drawArea) ;
+
+
 
         area = drawArea;
 
@@ -122,7 +138,7 @@ public class Wall {
      * @param type type of brick
      * @return a list of only clay bricks ( the wall )
      */
-    private Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){
+    public BrickController[] makeSingleTypeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int type){
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
           multiple of lineCount smaller then brickCount
@@ -136,7 +152,7 @@ public class Wall {
 
         brickCnt += lineCnt / 2;
 
-        Brick[] tmp  = new Brick[brickCnt];
+        BrickController[] tmp  = new BrickController[brickCnt];
 
         Dimension brickSize = new Dimension((int) brickLen,(int) brickHgt);
         Point p = new Point();
@@ -176,7 +192,7 @@ public class Wall {
      * @param typeB 2nd type of brick in alternating types of brick
      * @return the chessboard layout of bricks
      */
-    private Brick[] makeChessboardLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
+    private BrickController[] makeChessboardLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
           multiple of lineCount smaller then brickCount
@@ -193,7 +209,7 @@ public class Wall {
 
         brickCnt += lineCnt / 2;
 
-        Brick[] tmp  = new Brick[brickCnt];
+        BrickController[] tmp  = new BrickController[brickCnt];
 
         Dimension brickSize = new Dimension((int) brickLen,(int) brickHgt);
         Point p = new Point();
@@ -221,7 +237,7 @@ public class Wall {
         return tmp;
     }
 
-    private Brick[] makeLevelHard(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
+    private BrickController[] makeLevelHard(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
           multiple of lineCount smaller then brickCount
@@ -238,7 +254,7 @@ public class Wall {
 
         brickCnt += lineCnt / 2;
 
-        Brick[] tmp  = new Brick[brickCnt];
+        BrickController[] tmp  = new BrickController[brickCnt];
 
         Dimension brickSize = new Dimension((int) brickLen,(int) brickHgt);
         Point p = new Point();
@@ -284,8 +300,8 @@ public class Wall {
      * @param brickDimensionRatio
      * @return levels with different brick wall layouts
      */
-    private Brick[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
-        Brick[][] tmp = new Brick[LEVELS_COUNT][];
+    private BrickController[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
+        BrickController[][] tmp = new BrickController[LEVELS_COUNT][];
         tmp[0] = makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY);
         tmp[1] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CEMENT);
         tmp[2] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
@@ -299,7 +315,7 @@ public class Wall {
      */
     public void move(){
         //player.move();
-        Player.getInstance().move();
+        player.getInstance().move();
         ball.move();
     }
 
@@ -309,10 +325,11 @@ public class Wall {
      *
      */
     public void findImpacts(){
-        if(Player.getInstance().impact(ball)){
-            ball.reverseY();
 
+        if(player.getInstance().impact(ball)){
+            ball.reverseY();
         }
+
         else if(impactWall()){
             /*for efficiency reverse is done into method impactWall
             * because for every brick program checks for horizontal and vertical impacts
@@ -338,25 +355,29 @@ public class Wall {
      * @return if the brick can have an impact
      */
     private boolean impactWall(){
-        for(Brick b : bricks){
+        //ball = getBall();
+        for(BrickController b : bricks){
 
             switch(b.findImpact(ball))
             {
                 //Vertical Impact
                 case Brick.UP_IMPACT:
                     ball.reverseY();
-                    return b.setImpact(ball.down, Crack.UP);
+                    return b.setImpact(ball.getDown(), Crack.UP);
+
                 case Brick.DOWN_IMPACT:
                     ball.reverseY();
-                    return b.setImpact(ball.up,Crack.DOWN);
+                    return b.setImpact(ball.getUp(),Crack.DOWN);
 
                 //Horizontal Impact
                 case Brick.LEFT_IMPACT:
                     ball.reverseX();
-                    return b.setImpact(ball.right,Crack.RIGHT);
+                    return b.setImpact(ball.getRight(),Crack.RIGHT);
+
                 case Brick.RIGHT_IMPACT:
                     ball.reverseX();
-                    return b.setImpact(ball.left,Crack.LEFT);  // return true if impact is hit
+
+                    return b.setImpact(ball.getLeft(),Crack.LEFT);  // return true if impact is hit
             }
 
 
@@ -391,7 +412,7 @@ public class Wall {
      * reset the ball to first position
      */
     public void ballReset(){
-        Player.getInstance().moveTo(startPoint);
+        player.getInstance().moveTo(startPoint);
         ball.moveTo(startPoint);
         int speedX,speedY;
             speedX = 8;
@@ -405,9 +426,10 @@ public class Wall {
      * reset the entire wall ( giving 3 ball chances and original brick layout)
      */
     public void wallReset(){
-        for(Brick b : bricks)
+        for(BrickController b : bricks)
             b.repair();
         brickCount = bricks.length;
+        //System.out.println(brickCount);
         ballCount = 3;
         finalhighscore = currenthighscore;
         currenthighscore = 0 ;
@@ -489,9 +511,9 @@ public class Wall {
      * @param type bricktype
      * @return brick chosen
      */
-    private Brick makeBrick(Point point, Dimension size, int type){
+    private BrickController makeBrick(Point point, Dimension size, int type){
         brickFactory = new brickFactory() ;
-        Brick out;
+        BrickController out;
 
         switch(type){
             case CLAY:
@@ -509,7 +531,7 @@ public class Wall {
             default:
                 throw  new IllegalArgumentException(String.format("Unknown Type:%d\n",type));
         }
-        return  out;
+        return out;
     }
 
     public int getCurrenthighscore() {
@@ -527,14 +549,14 @@ public class Wall {
 
 
 
-    public Ball getBall() {
+    public BallController getBall() {
         return ball;
     }
 
 
-   /* public void setArea(Rectangle area) {
+   public void setArea(Rectangle area) {
         this.area = area;
-    }*/
+    }
 
    /* public Rectangle getArea() {
         return area;

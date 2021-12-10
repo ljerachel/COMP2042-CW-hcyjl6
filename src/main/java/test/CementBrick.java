@@ -1,11 +1,13 @@
 package test;
 
+import test.Controller.BrickController;
+
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
 
-public class CementBrick extends Brick {
+public class CementBrick extends BrickController {
 
 
     private static final String NAME = "Cement Brick";

@@ -1,11 +1,14 @@
 package test;
 
+import test.Model.BallModel;
+import test.Model.BrickModel;
+
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
-import static test.Brick.getRnd;
+
 
 public class Crack {
 
@@ -13,7 +16,6 @@ public class Crack {
     private static final double JUMP_PROBABILITY = 0.7;
 
 
-    //
     public static final int LEFT = 10;
     public static final int RIGHT = 20;
     public static final int UP = 30;
@@ -144,7 +146,7 @@ public class Crack {
      */
     private int randomInBounds(int bound) {
         int n = (bound * 2) + 1;
-        return getRnd().nextInt(n) - bound;
+        return BrickModel.getRnd().nextInt(n) - bound;
     }
 
     /**  !!!!
@@ -162,7 +164,7 @@ public class Crack {
 
     private int jumps(int bound, double probability) {
 
-        if (getRnd().nextDouble() > probability)
+        if (BrickModel.getRnd().nextDouble() > probability)
             return randomInBounds(bound);
         return 0;
 
@@ -181,11 +183,11 @@ public class Crack {
 
         switch (direction) {
             case HORIZONTAL:
-                pos = getRnd().nextInt(to.x - from.x) + from.x;
+                pos = BrickModel.getRnd().nextInt(to.x - from.x) + from.x;
                 out.setLocation(pos, to.y);
                 break;
             case VERTICAL:
-                pos = getRnd().nextInt(to.y - from.y) + from.y;
+                pos = BrickModel.getRnd().nextInt(to.y - from.y) + from.y;
                 out.setLocation(to.x, pos);
                 break;
         }

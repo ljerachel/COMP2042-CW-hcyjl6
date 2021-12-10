@@ -1,9 +1,11 @@
 package test;
 
+import test.Controller.BrickController;
+
 import java.awt.*;
 
 public class brickFactory {
-    public Brick getBrickType(String brickType, Point pos, Dimension size)
+    public BrickController getBrickType(String brickType, Point pos, Dimension size)
     {
         if (brickType.equalsIgnoreCase("CEMENT"))
         {

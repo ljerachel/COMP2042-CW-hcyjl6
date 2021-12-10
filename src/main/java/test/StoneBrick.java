@@ -1,11 +1,13 @@
 package test;
 
+import test.Controller.BrickController;
+
 import java.awt.*;
 import java.awt.Point;
 
 
 
-public class StoneBrick extends Brick {
+public class StoneBrick extends BrickController {
     private static final String NAME = "Stone Brick";
     private static final Color DEF_INNER = new Color(0, 34, 34).darker();
     private static final Color DEF_BORDER = Color.GRAY;

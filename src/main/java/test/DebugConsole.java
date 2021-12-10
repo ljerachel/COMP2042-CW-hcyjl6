@@ -17,6 +17,8 @@
  */
 package test;
 
+import test.Controller.BallController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
@@ -97,7 +99,7 @@ public class DebugConsole extends JDialog implements WindowListener{
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();
-        Ball b = wall.ball;
+        BallController b = wall.ball;  // wtf
         debugPanel.setValues(b.getSpeedX(),b.getSpeedY());
     }
 

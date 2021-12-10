@@ -30,6 +30,9 @@ abstract public class Brick  {
 
 
     private String name;
+
+
+
     Shape brickFace;
 
     private Color border;
