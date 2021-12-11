@@ -55,6 +55,10 @@ abstract public class BallController {
     }
 
 
+    /**
+     * this method controls the movement of the ball
+     *
+     */
     public void move(){
         center = ballModel.getCenter();
         RectangularShape tmp = (RectangularShape) ballFace;
@@ -70,22 +74,6 @@ abstract public class BallController {
     }
 
 
-    public void changeView(Graphics2D g2d)
-    {
-      /*  Color tmp = g2d.getColor();
-        Shape s = getBallFace();
-
-        g2d.setColor(getInnerColor());
-        g2d.fill(s);
-
-        g2d.setColor(getBorderColor());
-        g2d.draw(s);
-
-        g2d.setColor(tmp);*/
-
-
-    }
-
     public Shape getBallFace4View()
     {
         Shape s  = ballFace;
@@ -96,6 +84,9 @@ abstract public class BallController {
     protected abstract Shape makeBall(Point2D center,int radius);
 
 
+    /**
+     * set the direction of the ball movement to the opposite (horizontally)
+     */
     public void reverseX(){
 
         setXSpeed(-getSpeedX());
@@ -108,9 +99,9 @@ abstract public class BallController {
         setYSpeed(-getSpeedY());
     }
 
-   public Point2D getPosition() {
-       return ballModel.getCenter();
-   }
+    public Point2D getPosition() {
+        return ballModel.getCenter();
+    }
 
     public Color getBorderColor(){
         return ballModel.getBorderColor();
@@ -120,6 +111,12 @@ abstract public class BallController {
         return ballModel.getInnerColor();
     }
 
+
+    /**
+     * !!@param width of the framing rectangle
+     * !!@param height of the framing rectangle
+     * set coordinates of the ball
+     */
     private void setPoints(double width,double height){
         ballModel.getUp().setLocation(center.getX(),center.getY()-(height / 2));
         ballModel.getDown().setLocation(center.getX(),center.getY()+(height / 2));

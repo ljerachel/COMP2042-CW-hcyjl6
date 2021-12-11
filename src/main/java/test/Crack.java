@@ -1,13 +1,11 @@
 package test;
 
-import test.Model.BallModel;
+
 import test.Model.BrickModel;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
-import java.util.Random;
-
 
 
 public class Crack {

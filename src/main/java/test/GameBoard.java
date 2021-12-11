@@ -30,7 +30,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.Random;
+
 
 
 public class GameBoard extends JComponent implements KeyListener,MouseListener,MouseMotionListener {
@@ -78,7 +78,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private int strLen;
 
     private DebugConsole debugConsole;
-    private scoreboard scoreboard;
 
 
     /**

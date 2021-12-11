@@ -1,8 +1,6 @@
 package test.Controller;
 
-import test.Ball;
-import test.Brick;
-import test.Model.BallModel;
+
 import test.Model.BrickModel;
 import test.View.BrickView;
 
@@ -41,6 +39,11 @@ abstract public class BrickController {
     }
 
 
+    /**
+     * @param pos position of the brick
+     * @param size size of the brick
+     * @return
+     */
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
 
     public abstract Shape getBrick();
@@ -73,6 +76,12 @@ abstract public class BrickController {
         return brickModel.getFullStrength();
     }
 
+
+    /**
+     * @param point point of impact on the ball
+     * @param dir direction of the impact!!!!!
+     * @return false if broken ,true if not broken and has impact
+     */
     public  boolean setImpact(Point2D point , int dir){
         if(isBroken())    // true
             return false;

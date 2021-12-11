@@ -21,6 +21,7 @@ package test;
 import test.Controller.BallController;
 import test.Controller.BrickController;
 import test.Controller.PlayerController;
+import test.Model.BrickModel;
 import test.Model.PlayerModel;
 
 import javax.imageio.ImageIO;
@@ -348,20 +349,20 @@ public class Wall {
             switch(b.findImpact(ball))
             {
                 //Vertical Impact
-                case Brick.UP_IMPACT:
+                case BrickModel.UP_IMPACT:
                     ball.reverseY();
                     return b.setImpact(ball.getDown(), Crack.UP);
 
-                case Brick.DOWN_IMPACT:
+                case BrickModel.DOWN_IMPACT:
                     ball.reverseY();
                     return b.setImpact(ball.getUp(),Crack.DOWN);
 
                 //Horizontal Impact
-                case Brick.LEFT_IMPACT:
+                case BrickModel.LEFT_IMPACT:
                     ball.reverseX();
                     return b.setImpact(ball.getRight(),Crack.RIGHT);
 
-                case Brick.RIGHT_IMPACT:
+                case BrickModel.RIGHT_IMPACT:
                     ball.reverseX();
 
                     return b.setImpact(ball.getLeft(),Crack.LEFT);  // return true if impact is hit
@@ -521,6 +522,7 @@ public class Wall {
         return out;
     }
 
+
     public int getCurrenthighscore() {
         return currenthighscore;
     }
@@ -544,10 +546,6 @@ public class Wall {
    public void setArea(Rectangle area) {
         this.area = area;
     }
-
-   /* public Rectangle getArea() {
-        return area;
-    }*/
 
     public void setBrickCount(int brickCount) {
         this.brickCount = brickCount;

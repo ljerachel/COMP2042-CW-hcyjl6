@@ -1,3 +1,4 @@
+/*
 package test;
 
 import javax.swing.*;
@@ -38,7 +39,6 @@ public class scoreboard  extends JComponent implements MouseListener, MouseMotio
 
     private Font TitleFont;
     private Font buttonFont;
-    //private Rectangle menuButton;
 
     public scoreboard(JFrame owner) {
 
@@ -184,3 +184,4 @@ public class scoreboard  extends JComponent implements MouseListener, MouseMotio
 
 
 }
+*/

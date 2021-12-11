@@ -17,13 +17,13 @@
  */
 package test;
 
+
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
 
-// MVC  - view
 public class DebugPanel extends JPanel {
 
     private static final Color DEF_BKG = Color.WHITE;

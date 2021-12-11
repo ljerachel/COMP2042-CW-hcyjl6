@@ -32,8 +32,14 @@ public class BrickModel {
 
     private boolean broken;
 
-
-
+    /**
+     * @param name type of brick
+     * @param pos position of brick
+     * @param size size of brick
+     * @param border border colour of brick
+     * @param inner the inner brick colour
+     * @param strength how hard it is to break the brick
+     */
     public BrickModel(String name, Point pos,Dimension size,Color border,Color inner,int strength){
         rnd = new Random();
         broken= false;   //the brick broken or not

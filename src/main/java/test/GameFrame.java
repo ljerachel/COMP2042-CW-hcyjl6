@@ -32,7 +32,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
-    private scoreboard scoreboard;
+
 
     private boolean gaming;
 
@@ -47,7 +47,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
         homeMenu = new HomeMenu(this,new Dimension(450,300));
 
-        scoreboard = new scoreboard(this);
+
 
         this.add(homeMenu,BorderLayout.CENTER);
 
