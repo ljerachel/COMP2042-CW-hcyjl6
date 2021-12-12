@@ -18,6 +18,8 @@
 package test;
 
 
+import test.Model.Wall;
+
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import java.awt.*;

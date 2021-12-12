@@ -16,18 +16,14 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package test.Model;
 
 import test.Controller.BallController;
 import test.Controller.BrickController;
 import test.Controller.PlayerController;
-import test.Model.BrickModel;
-import test.Model.PlayerModel;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Point2D;
-import java.io.File;
 import java.util.Random;
 
 
@@ -51,10 +47,10 @@ public class Wall {
     BrickController[] bricks;
 
 
-    BallFactory BallFactory ;
-    BallController ball;
+    public BallFactory BallFactory ;
+    public BallController ball;
     PlayerController player;
-    brickFactory brickFactory;
+    test.Model.brickFactory brickFactory;
 
 
     private boolean lifeCollected = false  ;

@@ -17,8 +17,6 @@
  */
 package test.View;
 
-import test.GameFrame;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

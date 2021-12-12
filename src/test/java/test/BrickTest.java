@@ -2,9 +2,10 @@ package test;
 
 import org.junit.jupiter.api.Test;
 import test.Controller.BrickController;
+import test.Model.CementBrick;
+import test.Model.RubberBall;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 
 import static org.junit.jupiter.api.Assertions.*;
 

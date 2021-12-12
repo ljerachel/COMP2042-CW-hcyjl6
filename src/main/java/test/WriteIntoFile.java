@@ -1,5 +1,7 @@
 package test;
 
+import test.Model.Wall;
+
 import java.io.*;
 
 

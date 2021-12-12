@@ -1,8 +1,7 @@
-package test;
+package test.Model;
 
 import test.Controller.BallController;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
 
 public class BallFactory {

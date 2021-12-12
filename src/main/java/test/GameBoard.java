@@ -19,8 +19,10 @@ package test;
 
 import test.Controller.BrickController;
 import test.Controller.PlayerController;
+import test.Model.Wall;
+import test.View.DebugConsole;
+import test.View.GameFrame;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

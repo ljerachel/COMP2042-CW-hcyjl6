@@ -1,7 +1,7 @@
 package test.Controller;
 
 import test.Model.PlayerModel;
-import test.RubberBall;
+import test.Model.RubberBall;
 import test.View.PlayerView;
 
 import java.awt.*;

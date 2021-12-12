@@ -1,6 +1,5 @@
 package test;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
@@ -8,7 +7,7 @@ import java.awt.geom.RectangularShape;
 
 import org.junit.jupiter.api.Test;
 import test.Controller.BallController;
-import test.Model.BallModel;
+import test.Model.RubberBall;
 
 
 import static org.junit.Assert.assertEquals;

@@ -1,6 +1,7 @@
-package test;
+package test.Model;
 
 import test.Controller.BrickController;
+import test.Model.Crack;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
@@ -30,7 +31,7 @@ public class CementBrick extends BrickController {
     }
 
     @Override
-    protected Shape makeBrickFace(Point pos, Dimension size) {
+    public Shape makeBrickFace(Point pos, Dimension size) {
         return new Rectangle(pos,size);
     }
 

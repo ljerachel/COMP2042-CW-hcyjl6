@@ -1,4 +1,4 @@
-package test;
+package test.Model;
 
 
 import test.Model.BrickModel;
@@ -63,7 +63,7 @@ public class Crack {
      * @var start start of crack
      * @var end end of crack
      */
-    protected void makeCrack(Shape brickFace , Point2D point, int direction) {
+    public void makeCrack(Shape brickFace , Point2D point, int direction) {
         Rectangle bounds = brickFace.getBounds();
 
         Point impact = new Point((int) point.getX(), (int) point.getY());

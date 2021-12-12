@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import test.Controller.BallController;
 import test.Controller.BrickController;
 import test.Controller.PlayerController;
+import test.Model.ClayBrick;
+import test.Model.RubberBall;
+import test.Model.Wall;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
