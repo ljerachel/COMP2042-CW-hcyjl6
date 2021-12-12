@@ -60,8 +60,8 @@ public class Crack {
      * @param brickFace the bricks
      * @param point position of the crack
      * @param direction direction of the crack
-     * @var start start of crack
-     * @var end end of crack
+     * start start of crack
+     * end end of crack
      */
     public void makeCrack(Shape brickFace , Point2D point, int direction) {
         Rectangle bounds = brickFace.getBounds();

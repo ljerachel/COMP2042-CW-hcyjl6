@@ -86,7 +86,7 @@ public class PlayerController {
     }
 
     /**
-     * player stays in a fixed position
+     * player stays stagnant
      */
     public void stop(){
         playerModel.setMoveAmount(0) ;

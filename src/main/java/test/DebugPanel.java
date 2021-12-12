@@ -42,7 +42,7 @@ public class DebugPanel extends JPanel {
     /**
      * @param wall wall
      * button to skip level
-     * slider to change ball speed 
+     * slider to change ball speed
      */
     public DebugPanel(Wall wall){
 
