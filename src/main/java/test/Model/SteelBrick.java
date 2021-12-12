@@ -46,6 +46,11 @@ public class SteelBrick extends BrickController {
     }
 
 
+    /**
+     * @param pos  position of the brick
+     * @param size size of the brick
+     * @return framing rectangle
+     */
     @Override
     protected Shape makeBrickFace(Point pos, Dimension size) {
         return new Rectangle(pos,size);
@@ -58,7 +63,7 @@ public class SteelBrick extends BrickController {
 
     /**
      * @param point point of impact on the ball
-     * @param dir direction of the impact!!!!!
+     * @param dir direction of the impact
      * @return check if the brick is broken
      */
 
@@ -71,10 +76,11 @@ public class SteelBrick extends BrickController {
 
     /**
      * if the random double generated is lower than 0.4, impact between ball and brick will occur
+     * the strength of the brick decreases when hit on impact , broken when strength = 0
      */
     public void impact(){
         if(rnd.nextDouble() < STEEL_PROBABILITY){
-            super.impact();  //  the strength of the brick decreases when hit on impact , broken when strength = 0
+            super.impact();
         }
     }
 

@@ -1,9 +1,5 @@
 package test.Model;
 
-
-
-import test.Model.IndividualScores;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,9 +8,6 @@ import java.util.Collections;
  * read and arrange file in array list of IndividualScores in descending order
  */
 public class ReadFile {
-
-
-
     private int ranking = 1  ;
     private String name;
     private int highscore;
@@ -24,6 +17,9 @@ public class ReadFile {
 
     String row  = "";
 
+    /**
+     * read highscore.csv file into an array list and sort, ranking is added after sorting
+     */
     public ReadFile() throws IOException {
 
 
@@ -36,7 +32,7 @@ public class ReadFile {
 
 
 
-            for(int i = 0; i < 9  ; i ++)  //
+            for(int i = 0; i < 9  ; i ++)
             {
 
                     row = csvread.readLine();
@@ -61,7 +57,7 @@ public class ReadFile {
 
         for(IndividualScores score: aList ) {
             writer.write( score.getName() + ',' + score.getHighscore() +','+ ranking + '\n');
-            ranking += 1;  // write again to the file
+            ranking += 1;
         }
 
 
@@ -71,10 +67,6 @@ public class ReadFile {
     }
 
 
-
-    public static ArrayList<IndividualScores> getaList() {
-        return aList;
-    }
 
 
 

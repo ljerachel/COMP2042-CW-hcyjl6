@@ -39,6 +39,11 @@ public class DebugPanel extends JPanel {
 
     private Wall wall;
 
+    /**
+     * @param wall wall
+     * button to skip level
+     * slider to change ball speed 
+     */
     public DebugPanel(Wall wall){
 
         this.wall = wall;

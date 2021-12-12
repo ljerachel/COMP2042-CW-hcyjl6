@@ -38,11 +38,11 @@ public class BrickModel {
      * @param size size of brick
      * @param border border colour of brick
      * @param inner the inner brick colour
-     * @param strength how hard it is to break the brick
+     * @param strength number of impact it takes to break the brick
      */
     public BrickModel(String name, Point pos,Dimension size,Color border,Color inner,int strength){
         rnd = new Random();
-        broken= false;   //the brick broken or not
+        broken= false;
         this.name = name;
         this.border = border;
         this.inner = inner;
@@ -57,10 +57,6 @@ public class BrickModel {
     public final boolean isBroken()
     {
         return broken;
-    }
-
-    public Shape getBrickFace() {
-        return brickFace;
     }
 
     public static Random getRnd() {
@@ -90,10 +86,6 @@ public class BrickModel {
         return strength;
     }
 
-    public void setFullStrength(int fullStrength)
-    {
-        this.fullStrength = fullStrength;
-    }
 
     public void setStrength(int strength)
     {

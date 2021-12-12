@@ -176,6 +176,14 @@ public class GameBoardView extends JComponent{
     }
 
 
+    /**
+     * draws ball which is called from ballview
+     * draws the power ups(life and speed) when they have not been collected
+     * displays the power up image for life when life is collected
+     * draw bricks if they have not been broken
+     * draw player by calling the player instance from player controller
+     * draws scoreboard when showscoreboard boolean is set to true
+     */
     public void paint(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
@@ -201,7 +209,7 @@ public class GameBoardView extends JComponent{
         }
 
         for (BrickController b : wall.getBricks())
-            if (!b.isBroken())   // false (not broken draw the brick)
+            if (!b.isBroken())
 
             {
                 b.brickView.drawBrick(b, g2d);
@@ -262,6 +270,9 @@ public class GameBoardView extends JComponent{
     }
 
 
+    /**
+     * @param wall passes wall to draw speed power up icon onto it behind brick at position q which has coordinates of (200,50)
+     */
     private void drawIncreaseSpeedIcon( Graphics2D g2d ,Wall wall )
     {
 
@@ -276,6 +287,9 @@ public class GameBoardView extends JComponent{
 
     }
 
+    /**
+     * @param g2d draw pause menu
+     */
     private void drawMenu(Graphics2D g2d) {
         obscureGameBoard(g2d);
         drawPauseMenu(g2d);
@@ -363,6 +377,9 @@ public class GameBoardView extends JComponent{
         g2d.drawString("press F key to restart game",60,400);
     }
 
+    /**
+     * draws pause menu with pause, continue, restart and exit
+     */
     private void drawPauseMenu(Graphics2D g2d){
         Font tmpFont = g2d.getFont();
         Color tmpColor = g2d.getColor();
@@ -418,7 +435,7 @@ public class GameBoardView extends JComponent{
 
 
     /**
-     * when the application is minimized, a message Focul Lost would be displayed
+     * when the application is minimized, a message Focus Lost message would be displayed
      */
     public void onLostFocus(){
         gameTimer.stop();
@@ -508,16 +525,25 @@ public class GameBoardView extends JComponent{
         this.showScoreboard = showScoreboard;
     }
 
+    /**
+     * add key listener from controller(gamebaord) into view
+     */
     public void addKeyListenerfromGameboard(KeyListener keyEvent){
         this.addKeyListener(keyEvent);
     }
 
 
+    /**
+     * adds mouselistener form controller(gameboard) into view
+     */
     public void addMouseListenerfromGameboard(MouseListener mouseEvent){
         this.addMouseListener(mouseEvent);
     }
 
 
+    /**
+     * adds mouse motion listener from controller into view
+     */
     public void addMouseMotionListenerfromGameboard(MouseMotionListener mouseEvent){
         this.addMouseMotionListener(mouseEvent);
     }

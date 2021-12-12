@@ -68,7 +68,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     }
 
     /**
-     *
+     * remove the homemenu and paints the gameboard view
      */
     public void enableGameBoard(){
         this.dispose();
@@ -82,9 +82,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     }
 
 
-
-
-
+    /**
+     * locate the dimension size and set width and height of the window
+     */
     private void autoLocate(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (size.width - this.getWidth()) / 2;

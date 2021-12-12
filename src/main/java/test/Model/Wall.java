@@ -453,6 +453,8 @@ public class Wall {
 
     /**
      * @param p position of the speed icon power up
+     * if ball position in bounds of speed icon position
+     * the speed icon will not be activated after it has been touched once by the ball
      */
     public void touchSpeedIcon(Point2D p)
     {
@@ -464,8 +466,6 @@ public class Wall {
                     setBallYSpeed(ball.getSpeedY());
 
                     speedCollected = true ;
-                    System.out.println("touch");
-
                 }
             }
 

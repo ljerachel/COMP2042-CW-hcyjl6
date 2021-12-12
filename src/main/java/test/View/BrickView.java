@@ -7,6 +7,9 @@ import java.awt.*;
 
 public class BrickView {
 
+    /**
+     * draws the brick with graphics2D
+     */
     public void drawBrick(BrickController brick, Graphics2D g2d) {
         Color tmp = g2d.getColor();
 

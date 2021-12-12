@@ -47,6 +47,8 @@ abstract public class BrickController {
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
 
     public abstract Shape getBrick();
+
+
     /**
      * the strength of the brick decreases when hit on impact , broken when strength = 0
      */
@@ -61,7 +63,7 @@ abstract public class BrickController {
      */
     public void repair() {
 
-         setBroken(false);
+        setBroken(false);
         setStrength(getFullStrength());
     }
 

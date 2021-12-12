@@ -10,22 +10,6 @@ public class BallModel {
 
     private Point2D center;
 
- /*   public Point2D getUp() {
-        return up;
-    }
-
-    public Point2D getDown() {
-        return down;
-    }
-
-    public Point2D getLeft() {
-        return left;
-    }
-
-    public Point2D getRight() {
-        return right;
-    }*/
-
     Point2D up;
     Point2D down;
     Point2D left;
@@ -38,6 +22,13 @@ public class BallModel {
     private int speedY;
 
 
+    /**
+     * @param center center of ball
+     * @param radius radius of ball
+     * @param inner inner color of ball
+     * @param border outer border of ball
+     * set the side of the ball (up, down, left, right)
+     */
     public BallModel(Point2D center, int radius,Color inner, Color border)
     {
         this.center = center;
@@ -53,15 +44,11 @@ public class BallModel {
         left.setLocation(center.getX()-(radius /2),center.getY());
         right.setLocation(center.getX()+(radius /2),center.getY());
 
-       /* ballFace = makeBall(center,radius); */
-
         this.border = border;
         this.inner  = inner;
         speedX = 0;
         speedY = 0;
     }
-
-
 
     public Point2D getUp() {
         return up;
@@ -78,6 +65,7 @@ public class BallModel {
     public Point2D getRight() {
         return right;
     }
+
 
     public void setSpeed(int x,int y){
         speedX = x;
@@ -104,18 +92,9 @@ public class BallModel {
         return center;
     }
 
-   public Shape getBallFace(){
+    public Shape getBallFace(){
         return ballFace;
     }
-
-    private void setPoints(double width,double height){
-        up.setLocation(center.getX(),center.getY()-(height / 2));
-        down.setLocation(center.getX(),center.getY()+(height / 2));
-
-        left.setLocation(center.getX()-(width / 2),center.getY());
-        right.setLocation(center.getX()+(width / 2),center.getY());
-    }
-
 
     public int getSpeedX(){
         return speedX;

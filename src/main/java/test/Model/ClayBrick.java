@@ -24,6 +24,11 @@ public class ClayBrick extends BrickController {
         super(NAME,point,size,DEF_BORDER,DEF_INNER,CLAY_STRENGTH);
     }
 
+    /**
+     * @param pos  position of the brick
+     * @param size size of the brick
+     * @return
+     */
     @Override
     protected Shape makeBrickFace(Point pos, Dimension size) {
         return new Rectangle(pos,size);

@@ -38,7 +38,7 @@ public class CementBrick extends BrickController {
     /**
      * @param point point where ball collides with the brick
      * @param dir direction of the impact
-     * !!!@return check if brick is broken
+     * @return check if brick is broken
      *  if not broken, brick condition is updated, if it is broken, return false, then upon impact , the brick strength is decremented
      */
     @Override
@@ -60,6 +60,8 @@ public class CementBrick extends BrickController {
         return brickFace;
     }
 
+
+
     /**
      * draw the crack on the brick when there is an impact
      * update the condition of the brick upon impact while it is not broken
@@ -73,7 +75,7 @@ public class CementBrick extends BrickController {
     }
 
     /**
-     * reset the bricks to its original position
+     * reset the bricks to its original state
      */
     public void repair(){
         super.repair();

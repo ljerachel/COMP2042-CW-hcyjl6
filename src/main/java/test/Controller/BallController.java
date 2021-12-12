@@ -12,10 +12,15 @@ abstract public class BallController {
     public BallModel ballModel ;
     public BallView ballView ;
 
-
     Point2D center;
     Shape ballFace ;
 
+    /**
+     * @param center center of ball
+     * @param radius radius of ball
+     * @param inner inner color of ball
+     * @param border outside border of ball
+     */
     public BallController(Point2D center,int radius,Color inner, Color border  )
     {
         ballModel = new BallModel(center, radius, inner, border);
@@ -57,7 +62,6 @@ abstract public class BallController {
 
     /**
      * this method controls the movement of the ball
-     *
      */
     public void move(){
         center = ballModel.getCenter();
@@ -113,8 +117,8 @@ abstract public class BallController {
 
 
     /**
-     * !!@param width of the framing rectangle
-     * !!@param height of the framing rectangle
+     * @param width of the framing rectangle
+     * @param height of the framing rectangle
      * set coordinates of the ball
      */
     private void setPoints(double width,double height){

@@ -24,9 +24,7 @@ public class ImageLoader {
         return this.img;
     }
 
-    public BufferedImage getSubImage(int section) {
-        return this.img.getSubimage(0, section * 25, 50, 25);
-    }
+
 }
 
 

@@ -19,6 +19,11 @@ public class StoneBrick extends BrickController {
         super(NAME,point,size,DEF_BORDER,DEF_INNER,STONE_STRENGTH);
     }
 
+    /**
+     * @param pos  position of the brick
+     * @param size size of the brick
+     * @return framing rectangle
+     */
     @Override
     protected Shape makeBrickFace(Point pos, Dimension size) {
         return new Rectangle(pos,size);

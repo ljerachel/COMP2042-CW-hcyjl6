@@ -50,7 +50,7 @@ public class Crack {
     }
 
     /**
-     * reset the cracks ?
+     * reset the cracks
      */
     public void reset() {
         crack.reset();
@@ -139,7 +139,6 @@ public class Crack {
     }
 
     /**
-     * @param bound ??
      * @return a random bound number
      */
     private int randomInBounds(int bound) {
@@ -147,12 +146,7 @@ public class Crack {
         return BrickModel.getRnd().nextInt(n) - bound;
     }
 
-    /**  !!!!
-     * @param i
-     * @param steps
-     * @param divisions
-     * @return
-     */
+
     private boolean inMiddle(int i, int steps, int divisions) {
         int low = (steps / divisions);
         int up = low * (divisions - 1);
@@ -169,10 +163,10 @@ public class Crack {
     }
 
     /**
-     * @param from the start of the brick
-     * @param to
-     * @param direction
-     * @return
+     * @param from the start of the crack
+     * @param to end of the crack
+     * @param direction direction of the crack
+     * @return crack location in (x,y) coordinates
      */
     private Point makeRandomPoint(Point from, Point to, int direction) {
 

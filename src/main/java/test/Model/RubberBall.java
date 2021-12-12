@@ -38,9 +38,8 @@ public class RubberBall extends BallController {
 
 
     /**
-     * !!!@param center coordinates of the ball in the center
-     * !!!@param radiusA x coordinate of the upper left corner of the framing rectangle
-     * !!!@param radiusB y coordinate of the upper left corner of the framing rectangle
+     * @param center coordinates of the ball in the center
+     * @param radius radius of the circle
      * @return framing rectangle
      */
 

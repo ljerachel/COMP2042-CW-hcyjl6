@@ -25,7 +25,7 @@ public class PlayerModel {
      * @param ballPoint starting position of the ball
      * @param width width of the player's rectangle
      * @param height height of the player's rectangle
-     * @param container the area that can allow movement of the player's rectangle
+     * @param container the area of the player's rectangle
      */
     public PlayerModel(Point ballPoint,int width,int height,Rectangle container) {
         this.ballPoint = ballPoint;

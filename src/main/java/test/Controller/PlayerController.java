@@ -17,6 +17,12 @@ public class PlayerController {
 
     private PlayerController(){}
 
+    /**
+     * @param ballPoint position of the ball
+     * @param width width of the player
+     * @param height height of the player
+     * @param container rectangle container for player
+     */
     private PlayerController(Point ballPoint,int width,int height,Rectangle container)
     {
         playerView = new PlayerView();
@@ -26,6 +32,9 @@ public class PlayerController {
         ballController = new RubberBall(ballPoint);  // not sure
     }
 
+    /**
+     * @return a playercontroller instance
+     */
     public static PlayerController getInstance() {
         if (playerInstance == null) {
             playerInstance = new PlayerController();
@@ -33,6 +42,12 @@ public class PlayerController {
         return playerInstance;
 
     }
+
+
+    /**
+     * singleton design
+     * @return a playercontroller instance
+     */
     public static PlayerController getInstance(Point ballpos,int width, int height, Rectangle container)
     {
         if (playerInstance == null)
@@ -63,10 +78,16 @@ public class PlayerController {
 
     }
 
+    /**
+     * the player moves right by 5 units
+     */
     public void movRight(){
         playerModel.setMoveAmount(PlayerModel.DEF_MOVE_AMOUNT) ;
     }
 
+    /**
+     * player stays in a fixed position
+     */
     public void stop(){
         playerModel.setMoveAmount(0) ;
     }

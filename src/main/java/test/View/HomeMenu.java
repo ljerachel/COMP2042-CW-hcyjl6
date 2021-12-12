@@ -71,8 +71,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
 
     /**
-     * @param owner
+     * @param owner game frame - base for the system
      * @param area menu area as it cannot be resized
+     * create 3 buttons in home menu which are start, menu and instruction
      */
     public HomeMenu(GameFrame owner,Dimension area){
 
@@ -110,6 +111,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
 
+    /**
+     * draw instructions when called
+     */
     public void paint(Graphics g){
 
         Graphics2D g2d = (Graphics2D)g ;
@@ -122,6 +126,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         }
     }
 
+    /**
+     * draw instructions graphics
+     */
     public void drawInstructions(Graphics2D g2d )
 
     {
@@ -149,7 +156,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
 
-
+    /**
+     * @param g2d draw menu graphics
+     */
     public void drawMenu(Graphics2D g2d) {
 
         drawContainer(g2d);
@@ -181,6 +190,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         //g2d.drawRect();
     }
 
+    /**
+     * draw container for entire home menu ( window border )
+     */
     private void drawContainer(Graphics2D g2d){
         Color prev = g2d.getColor();
 
@@ -202,6 +214,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.setColor(prev);
     }
 
+    /**
+     * @param g2d draws the text on home menu introducing the game
+     */
     private void drawText(Graphics2D g2d){
 
         g2d.setColor(TEXT_COLOR);
@@ -235,6 +250,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /**
+     * draws the buttons for start, menu, instruction
+     */
     private void drawButton(Graphics2D g2d){
 
         FontRenderContext frc = g2d.getFontRenderContext();
@@ -336,9 +354,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /**
+     * @param mouseEvent when mouse clicked area is at start button, the gameboard is enabled
+     *                   when mouse clicked area is at instruction button, the instruction page is repainted to be displayed
+     */
     @Override
-
-    // controller
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
         if(startButton.contains(p)){
@@ -360,6 +380,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /**
+     * @param mouseEvent when the buttons are clicked, the colour changes
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();

@@ -28,6 +28,7 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+
 public class DebugConsole extends JDialog implements WindowListener{
 
     private static final String TITLE = "Debug Console";
@@ -43,6 +44,7 @@ public class DebugConsole extends JDialog implements WindowListener{
      * @param owner
      * @param wall the game wall
      * @param gameBoard
+     * calls new debug panel instance
      */
     public DebugConsole(JFrame owner, Wall wall, GameBoardView gameBoard){
 
@@ -100,10 +102,15 @@ public class DebugConsole extends JDialog implements WindowListener{
 
     }
 
+    /**
+     * @param windowEvent any i/o that occurs inside the window
+     * get ball from wall into variable b
+     * ball speed is changed on
+     */
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();
-        BallController b = wall.getBall();  // wtf
+        BallController b = wall.getBall();
         debugPanel.setValues(b.getSpeedX(),b.getSpeedY());
     }
 

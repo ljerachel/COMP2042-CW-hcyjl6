@@ -6,6 +6,10 @@ import java.awt.*;
 
 public class BallView {
 
+
+    /**
+     * draws the ball with graphics2D
+     */
     public void drawBall(BallController ball, Graphics2D g2d) {
 
      Shape s = ball.getBallFace4View();

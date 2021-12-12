@@ -26,6 +26,7 @@ public class GameBoardController extends JComponent implements KeyListener,Mouse
         initialize();
     }
 
+
 private void initialize()
 {
     this.gameBoardView.addKeyListenerfromGameboard(this);
@@ -40,7 +41,7 @@ private void initialize()
     }
 
     /**
-     * @param keyEvent A and D is to move the player left and right, Esc is to show pause menu, SPACE is to pause game, f1 is to show debug console
+     * @param keyEvent A and D is to move the player left and right, Esc is to show pause menu, SPACE is to pause game, f1 is to show debug console , F restarts the game after scoreboard
      */
     @Override
     public void keyPressed(KeyEvent keyEvent) {
@@ -90,6 +91,11 @@ private void initialize()
         PlayerController.getInstance().stop();
     }
 
+    /**
+     * when pause menu is displayed
+     * when restart button is clicked, game is restarted
+     * when exit button is clicked, window is closed, system is exited
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
