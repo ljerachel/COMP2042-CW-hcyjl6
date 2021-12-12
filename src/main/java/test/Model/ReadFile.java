@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * read and arrange file in array list
+ * read and arrange file in array list of IndividualScores in descending order
  */
 public class ReadFile {
 

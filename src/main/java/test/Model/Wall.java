@@ -27,9 +27,6 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 
-/**
- * the wall of bricks
- */
 public class Wall {
 
     private static final int LEVELS_COUNT = 5;
@@ -42,10 +39,7 @@ public class Wall {
     private Random rnd;
     private Rectangle area;
 
-
-
     BrickController[] bricks;
-
 
     public BallFactory BallFactory ;
     public BallController ball;
@@ -54,6 +48,7 @@ public class Wall {
 
 
     private boolean lifeCollected = false  ;
+    private boolean speedCollected = false ;
     private BrickController[][] levels;
     private int level;
 
@@ -72,6 +67,7 @@ public class Wall {
     private boolean ballLost;
     private int currenthighscore ;
     private static int finalhighscore;
+
 
     /**
      * @param drawArea area of the entire wall
@@ -211,6 +207,16 @@ public class Wall {
         return tmp;
     }
 
+
+    /**
+     * @param drawArea area occupied by the total number of bricks
+     * @param brickCnt total number of bricks
+     * @param lineCnt line occupied by bricks
+     * @param brickSizeRatio  the ratio of the length to height of the brick
+     * @param typeA first type of brick in alternating types of brick
+     * @param typeB 2nd type of brick in alternating types of brick
+     * @return the chessboard layout of bricks
+     */
     private BrickController[] makeLevelHard(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
@@ -296,7 +302,11 @@ public class Wall {
 
 
     /**
-     *
+     *if player impacts the ball, the ball direction is reversed vertically
+     * if ball impacts the brick, score is increased, brick count is decreased
+     * if ball impacts the 2 horizontal borders of wall, ball direction is reversed vertically
+     * if ball impacts the 2 vertical borders of wall, ball direction is reversed horizontally
+     * if y coordinates of ball is more than the area's y coordinates , ballcount is decreased, ball is reset to initial position
      */
     public void findImpacts(){
 
@@ -326,10 +336,9 @@ public class Wall {
     }
 
     /**
-     * @return if the brick can have an impact
+     * @return true if ball impacts the brick in any direction
      */
     private boolean impactWall(){
-        //ball = getBall();
         for(BrickController b : bricks){
 
             switch(b.findImpact(ball))
@@ -409,19 +418,29 @@ public class Wall {
 
     }
 
+    /**
+     * @return true if the extra life power is collected
+     */
     public boolean isLifeCollected() {
         return lifeCollected;
     }
 
+
+    public boolean isSpeedCollected() {
+        return speedCollected ;
+    }
+
+    /**
+     * @param p the position of the extra life power up
+     * if ball touches the extra life power up, ball count is incremented, and a winning image is displayed
+     */
     public void touchIcon(Point2D p)
     {
-        if (!lifeCollected ) {
+        if (!lifeCollected) {
             if (ball.getPosition().getX() < p.getX() + 4 && ball.getPosition().getX() > p.getX() - 4) {
 
                 if (ball.getPosition().getY() < p.getY() + 4 && ball.getPosition().getY() > p.getY() - 4) {
                     ballCount++;
-                    //System.out.println("ball touch icon");
-
                     showWinningMsg = true ;
                     lifeCollected = true;
 
@@ -431,6 +450,32 @@ public class Wall {
         }
     }
 
+
+    /**
+     * @param p position of the speed icon power up
+     */
+    public void touchSpeedIcon(Point2D p)
+    {
+        if (!speedCollected) {
+            if (ball.getPosition().getX() < p.getX() + 6 && ball.getPosition().getX() > p.getX() - 6) {
+
+                if (ball.getPosition().getY() < p.getY() + 8 && ball.getPosition().getY() > p.getY() - 8) {
+                    setBallXSpeed(ball.getSpeedX()+4);
+                    setBallYSpeed(ball.getSpeedY());
+
+                    speedCollected = true ;
+                    System.out.println("touch");
+
+                }
+            }
+
+        }
+    }
+
+
+    /**
+     * @return true if there are no more ball lives left
+     */
     public boolean ballEnd(){
         return ballCount == 0;
     }
@@ -481,8 +526,8 @@ public class Wall {
     /**
      * @param point position of the brick
      * @param size size of the brick
-     * @param type bricktype
-     * @return brick chosen
+     * @param type type of brick to be made
+     * @return the specific brick type object is created
      */
     private BrickController makeBrick(Point point, Dimension size, int type){
         brickFactory = new brickFactory() ;

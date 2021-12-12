@@ -1,5 +1,8 @@
 package test.Model;
 
+/**
+ * class that contains the individual scores together with the name
+ */
 public class IndividualScores implements Comparable{
 
 

@@ -32,6 +32,7 @@ public class GameBoardView extends JComponent{
 
 
     private Point2D p;
+    private Point2D q;
     private boolean showScoreboard;
 
     private final boolean LifeIconDrawn = false ;
@@ -101,9 +102,18 @@ public class GameBoardView extends JComponent{
 
 
 
+            if(!wall.isSpeedCollected()){
+
+                wall.touchSpeedIcon(q);
+
+            }
+
+
             if (!wall.isLifeCollected()) {
                 wall.touchIcon(p);
             }
+
+
             if (wall.isShowWinningMsg()){
                 t++;
                 if (t==200)
@@ -181,6 +191,10 @@ public class GameBoardView extends JComponent{
             drawLifeIcon(g2d, wall);
         }
 
+        if(!wall.isSpeedCollected()){
+            drawIncreaseSpeedIcon(g2d, wall);
+        }
+
         if (wall.isShowWinningMsg())
         {
             g2d.drawImage(LifeIcon, 100,50 , 80   , 80  , null) ;
@@ -244,6 +258,21 @@ public class GameBoardView extends JComponent{
 
         g2d.setColor(Color.red);
         g2d.fill(circle);
+
+    }
+
+
+    private void drawIncreaseSpeedIcon( Graphics2D g2d ,Wall wall )
+    {
+
+        int x = 200 ;
+        int y = 50 ;
+        q = new Point2D.Double(x, y);
+        Ellipse2D.Double circle1 = new Ellipse2D.Double(x, y, 10, 10);
+        q.setLocation(x,y);
+
+        g2d.setColor(Color.green);
+        g2d.fill(circle1);
 
     }
 

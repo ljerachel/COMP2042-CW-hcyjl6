@@ -1,6 +1,5 @@
 package test.Model;
 
-import test.Model.Wall;
 import test.View.GameBoardView;
 
 import java.io.*;
@@ -9,11 +8,13 @@ import java.io.*;
 
 public class WriteIntoFile {
     private int ranking = 1  ;  // rank according to high scores
-    private String name ;
+   // private String name ;
     private int highscore;
 
 
-
+    /**
+     * write the newest high score into CSV file along with name
+     */
     public WriteIntoFile() throws IOException {
 
         highscore = Wall.getFinalhighscore();
