@@ -104,18 +104,8 @@ public class Wall {
         speedY = -3;
 
         ball.setSpeed(speedX,speedY);
-
-
-
         player = PlayerController.getInstance((Point)ballPos.clone(),150,10,drawArea) ;
-
-
-
         area = drawArea;
-
-
-
-
     }
 
     /**
@@ -302,7 +292,7 @@ public class Wall {
      * consists of the movements of both player rectangle and ball
      */
     public void move(){
-        //player.move();
+
         player.getInstance().move();
         ball.move();
     }
@@ -435,7 +425,7 @@ public class Wall {
 
                 if (ball.getPosition().getY() < p.getY() + 4 && ball.getPosition().getY() > p.getY() - 4) {
                     ballCount++;
-                    System.out.println("ball touch icon");
+                    //System.out.println("ball touch icon");
 
                     showWinningMsg = true ;
                     lifeCollected = true;

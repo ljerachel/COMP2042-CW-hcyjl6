@@ -3,9 +3,6 @@ package test;
 public class IndividualScores implements Comparable{
 
 
-
-
-    //private int ranking;
     private String name;
     private int highscore;
 

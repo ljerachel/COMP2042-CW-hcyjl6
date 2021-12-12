@@ -1,3 +1,4 @@
+/*
 package test;
 
 import org.junit.jupiter.api.Test;
@@ -27,18 +28,21 @@ class WallTest {
 // halo how to test
         @Test
         void move () {
-
-        wall.move() ;
+            wall.ballReset();
+            wall.move();
+            assertNotEquals(new Point(300, 430), wall.getBall().getPosition());
 
         }
 
        @Test
         void findImpacts () {
-       /* wall.setBallCount(3);
+       */
+/* wall.setBallCount(3);
         wall.setArea(new Rectangle(50,0 , 20 ,4));
         wall.findImpacts();  // ball's Y = 20 , area'y + area height = 14
         //assertEquals(14,wall.getArea().getY() + wall.getArea().getHeight() );
-        assertEquals(2,wall.getBallCount());*/
+        assertEquals(2,wall.getBallCount());*//*
+
 
 
            int ballY1 = wall.getBall().getSpeedY();
@@ -74,7 +78,8 @@ class WallTest {
         }
 
         @Test
-            void wallReset () {
+       */
+/*     void wallReset () {
 
 
 
@@ -84,6 +89,7 @@ class WallTest {
 
 
         }
+*//*
 
 
         @Test
@@ -131,3 +137,4 @@ class WallTest {
 
 
 }
+*/

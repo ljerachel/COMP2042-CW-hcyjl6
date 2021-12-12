@@ -46,7 +46,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Point2D p;
     private boolean showScoreboard;
 
-    private boolean LifeIconDrawn = false ;
+    private final boolean LifeIconDrawn = false ;
     private BufferedImage bi ;
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
@@ -56,11 +56,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private Timer gameTimer;
 
-    private Wall wall;
+    private final Wall wall;
     public int t;
 
 
-    private Image LifeIcon;
+    private final Image LifeIcon;
     private String message;
 
 
@@ -68,7 +68,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private boolean showPauseMenu;
 
-    private Font menuFont;
+    private final Font menuFont;
     private Font ScoreboardFont;
     private static String name;
 
@@ -77,11 +77,17 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle restartButtonRect;
     private int strLen;
 
-    private DebugConsole debugConsole;
+    private final DebugConsole debugConsole;
 
 
     /**
-     * @param owner
+     * instantiante debug console and wall object
+     * call the first level to be built
+     * gametimer that starts when the game starts and refreshes every 10 miliseconds
+     * if ball is lost, user will be prompted to enter their name and to choose if they want to see the leaderboard
+     * name will be written to the file along with the high score
+     * then the readFile method is called to read data from the csv file into an arraylist to be sorted
+     *
      */
     public GameBoard(JFrame owner) {
         super();
@@ -143,7 +149,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                     }
 
 
-                    message = String.format("Game over\n Score: %d ", wall.getFinalhighscore());
+                    message = String.format("Game over\n Score: %d ", Wall.getFinalhighscore());
 
 
                 }
@@ -187,6 +193,13 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
 
+    /**
+     * paint all the graphics in the game
+     * if the ball does not collect the extra life , the life icon will remain in the position
+     * if the ball collects the extra life, an image will pop up at the particular location
+     * bricks are drawn if they are not broken by impact
+     *
+     */
     public void paint(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
@@ -215,7 +228,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             if (!b.isBroken())   // false (not broken draw the brick)
 
             {
-                System.out.println("not broken");
                 b.brickView.drawBrick(b, g2d);
             }
 
@@ -252,8 +264,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
 
-
-
+    /**
+     * draw the extra life icon behind brick
+     *
+     */
     private void drawLifeIcon( Graphics2D g2d ,Wall wall ) // add this parameter
     {
 
@@ -263,25 +277,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         Ellipse2D.Double circle = new Ellipse2D.Double(x, y, 10, 10);
         p.setLocation(x,y);
 
-        g2d.setColor(Color.yellow);
+        g2d.setColor(Color.red);
         g2d.fill(circle);
 
 
 
-    }
-
-
-    private void drawPlayer(PlayerController p, Graphics2D g2d) {
-        Color tmp = g2d.getColor();
-
-        Shape s = p.getPlayerFace();
-        g2d.setColor(p.playerModel.INNER_COLOR);
-        g2d.fill(s);
-
-        g2d.setColor(p.playerModel.BORDER_COLOR);
-        g2d.draw(s);
-
-        g2d.setColor(tmp);
     }
 
     private void drawMenu(Graphics2D g2d) {
@@ -304,6 +304,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
 
+    /**
+     * reads the highscore.csv file into the GUI to be displayed
+     */
     public void drawScoreboard(Graphics2D g2d) throws IOException {
 
 
@@ -311,7 +314,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         String name = " ";
         int ranking = 0 ;
         int highscore ;
-        this.name = name;
+        GameBoard.name = name;
 
 
 
@@ -430,6 +433,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     public void keyTyped(KeyEvent keyEvent) {
     }
 
+    /**
+     * @param keyEvent A and D is to move the player left and right, Esc is to show pause menu, SPACE is to pause game, f1 is to show debug console
+     */
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         switch(keyEvent.getKeyCode()){
@@ -459,11 +465,19 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         }
     }
 
+    /**
+     * @param keyEvent when no key is pressed, player does not move
+     */
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         PlayerController.getInstance().stop();
     }
 
+    /**
+     * @param mouseEvent if mouse clicks on continue, menu is not repainted
+     *                   if restart is clicked on, everything is reset
+     *                   if exit is clicked on, game closes
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -527,7 +541,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
     /**
-     * when the application is minimized
+     * when the application is minimized, a message Focul Lost would be displayed
      */
     public void onLostFocus(){
         gameTimer.stop();
@@ -536,25 +550,30 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
 
-
+    /**
+     * a Jdialog pops up to prompt for user name
+     */
     private void input() {
         name = JOptionPane.showInputDialog(this, "Game over! please input your name");
-        this.name = name;
-
-
+        name = name;
     }
 
 
+    /**
+     * jdialog pops up to prompt user to choose if they want to view the leaderboard, if yes, scoreboard is displayed,
+     */
     private void viewLeaderboard()
     {
         int view =JOptionPane.showConfirmDialog(null,"View leaderboard ? ");
-        switch (view) {
+        switch (view)
+        {
             case JOptionPane.YES_OPTION:
                 showScoreboard=true;
                 repaint();
                 break;
             case JOptionPane.NO_OPTION:
-
+                showScoreboard = false ;
+                repaint();
                 break;
         }
     }

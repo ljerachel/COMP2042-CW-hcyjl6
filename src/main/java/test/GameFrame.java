@@ -25,6 +25,9 @@ import java.awt.event.WindowFocusListener;
 // MVC controller
 // the actual game
 
+/**
+ * call gameboard and homeMenu class (instantiate object)
+ */
 public class GameFrame extends JFrame implements WindowFocusListener {
 
     private static final String DEF_TITLE = "Brick Destroy";

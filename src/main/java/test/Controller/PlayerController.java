@@ -47,7 +47,7 @@ public class PlayerController {
      */
     public void move(){
         double x = playerModel.getBallPoint().getX() + playerModel.getMoveAmount();
-        //double x =ballPoint.getX() + playerModel.getMoveAmount();
+
         if(x < playerModel.getMin() || x > playerModel.getMax())
             return;
         playerModel.getBallPoint().setLocation(x,playerModel.getBallPoint().getY());

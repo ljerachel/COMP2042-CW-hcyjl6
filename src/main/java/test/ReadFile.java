@@ -17,9 +17,6 @@ public class ReadFile {
     private String name;
     private int highscore;
 
-    public static ArrayList<IndividualScores> getaList() {
-        return aList;
-    }
 
     private static ArrayList<IndividualScores> aList = new ArrayList<IndividualScores>();
 
@@ -38,26 +35,21 @@ public class ReadFile {
 
 
             for(int i = 0; i < 9  ; i ++)  //
-            {  // this loop is the problem
+            {
 
                     row = csvread.readLine();
                     System.out.println(row);
 
                     if(row!= null) {
                         String[] data = row.split(",");
-
-                        //ranking = Integer.parseInt(data[2]) ;
-
                         name = data[0];
-
                         highscore = Integer.parseInt(data[1]);
-
                         aList.add(new IndividualScores(name, highscore));
 
 
                     }
                 }
-//            }
+
 
             Collections.sort(aList);  // sort file
 
@@ -78,9 +70,14 @@ public class ReadFile {
 
 
 
-
-
+    public static ArrayList<IndividualScores> getaList() {
+        return aList;
     }
+
+
+
+
+}
 
 
 
