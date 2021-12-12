@@ -50,7 +50,7 @@ class WallTest {
            int ballX = wall. getBall().getSpeedX() ;
            wall.setBricks(wall.makeSingleTypeLevel(new Rectangle(0,0,600,450) , 30, 3, 6/2,1));
            //Testing if ball y speed reverses if it impoct with player
-           wall. findImpacts();
+           wall.findImpacts();
            assertEquals(-ball1,wall.getBall().getSpeedY());
            ball2 = wall.getBall().getSpeedY();
 

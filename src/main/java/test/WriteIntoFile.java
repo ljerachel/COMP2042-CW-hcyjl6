@@ -1,6 +1,7 @@
 package test;
 
 import test.Model.Wall;
+import test.View.GameBoardView;
 
 import java.io.*;
 
@@ -31,7 +32,7 @@ public class WriteIntoFile {
 
             if (a != null) {
 
-                writer.append(GameBoard.getname());
+                writer.append(GameBoardView.getname());
                 writer.append(',');
                 writer.append(String.valueOf(highscore));
                 writer.append(',');
