@@ -17,6 +17,8 @@
  */
 package test;
 
+import test.View.HomeMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;

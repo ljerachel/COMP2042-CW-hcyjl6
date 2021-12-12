@@ -1,6 +1,5 @@
 package test.Model;
 
-import test.Ball;
 import test.Controller.BallController;
 
 

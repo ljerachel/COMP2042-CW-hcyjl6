@@ -1,6 +1,5 @@
 package test.View;
 
-import test.Ball;
 import test.Controller.BallController;
 
 import java.awt.*;
@@ -20,6 +19,5 @@ public class BallView {
 
      g2d.setColor(tmp);
 
-        //ball.changeView(g2d);
     }
 }

@@ -407,7 +407,6 @@ public class Wall {
         for(BrickController b : bricks)
             b.repair();
         brickCount = bricks.length;
-        //System.out.println(brickCount);
         ballCount = 3;
         finalhighscore = currenthighscore;
         currenthighscore = 0 ;
@@ -526,7 +525,9 @@ public class Wall {
         this.ballCount = ballCount;
     }
 
-
+    public int getLevel() {
+        return level;
+    }
 
     public BallController getBall() {
         return ball;

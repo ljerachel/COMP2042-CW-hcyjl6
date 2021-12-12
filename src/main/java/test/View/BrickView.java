@@ -1,6 +1,6 @@
 package test.View;
 
-import test.Brick;
+
 import test.Controller.BrickController;
 
 import java.awt.*;

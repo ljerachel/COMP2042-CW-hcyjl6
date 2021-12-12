@@ -19,7 +19,6 @@ class PlayerTest {
     {
         a = new Point(20,20 );
         container = new Rectangle(10,20,30 , 10);
-        //player = PlayerController.getInstance(a,10,2,container);
         player = PlayerController.getInstance(a,10,5,container);
 
 
@@ -28,10 +27,8 @@ class PlayerTest {
     @Test
     void impact()
     {
-       // Rectangle container = new Rectangle(10,20,30 , 10);
+
         Point a = new Point(20,20 );
-        //Player player = new Player(a,10,2,container);
-        //player = PlayerController.getInstance(a,10,2,container);
         BallController b = new RubberBall(a);  // a is center
 
         player.impact(b);  // player face positioned at a too
@@ -46,9 +43,6 @@ class PlayerTest {
 
         Point ballpoint = new Point(20,20 );
         Rectangle container = new Rectangle(10,20,30 , 10);
-       // player = new PlayerController.getInstance(ballpoint,10,5,container);
-
-
         player.move();
         assertEquals(new Point(15,20 ), player.getPlayerFace().getBounds().getLocation());
 
@@ -57,48 +51,27 @@ class PlayerTest {
     }
 
     @Test
-    void moveLeft() {
-        /*Point a = new Point(20,20 );
-        Rectangle container = new Rectangle(10,20,30 , 10);*/
-        //Player player = new Player(a,10,2,container);
+    void moveLeftAndRight() {
         player.moveLeft();
         assertEquals(-5,player.playerModel.getMoveAmount());
-
-    }
-
-    @Test
-    void movRight() {
-/*
-        Point a = new Point(20,20 );
-        Rectangle container = new Rectangle(10,20,30 , 10);
-        Player player = new Player(a,10,2,container);*/
         player.movRight();
         assertEquals(5,player.playerModel.getMoveAmount());
-
     }
+
 
     @Test
     void stop() {
-       /* Point a = new Point(20,20 );
-        Rectangle container = new Rectangle(10,20,30 , 10);
-        Player player = new Player(a,10,2,container);*/
         assertEquals(0,player.playerModel.getMoveAmount());
     }
 
 
     @Test
     void moveTo() {
-       /* Point a = new Point(20,20 );
-        Rectangle container = new Rectangle(10,20,30 , 10);
-        Player player = new Player(a,10,2,container);*/
         Point p = new Point(50,50);
         player.moveTo(p);
         int x = 45; // ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y // ask emily!!!!!!!!!!!!!!!
         int y = 50 ;
         Point ans = new Point(45, 50);
         assertEquals(ans,player.getPlayerFace().getBounds().getLocation());
-
-
-
     }
 }
