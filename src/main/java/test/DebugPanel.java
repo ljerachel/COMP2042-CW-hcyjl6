@@ -67,7 +67,7 @@ public class DebugPanel extends JPanel {
     private JButton makeButton(String title, ActionListener e){
         JButton out = new JButton(title);
         out.addActionListener(e);
-        return  out;
+        return out;
     }
 
     private JSlider makeSlider(int min, int max, ChangeListener e){

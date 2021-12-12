@@ -2,10 +2,10 @@ package test.View;
 import test.Controller.BrickController;
 import test.Controller.GameBoardController;
 import test.Controller.PlayerController;
-import test.ImageLoader;
+import test.Model.ImageLoader;
 import test.Model.Wall;
-import test.ReadFile;
-import test.WriteIntoFile;
+import test.Model.ReadFile;
+import test.Model.WriteIntoFile;
 
 import javax.swing.*;
 import java.awt.*;
@@ -95,7 +95,7 @@ public class GameBoardView extends JComponent{
         wall.nextLevel();
 
         gameTimer = new Timer(10, e -> {  // for every 10 milliseconds , check for updates in the game
-            System.out.println("timer start");
+
             wall.move();
             wall.findImpacts();
 
@@ -213,7 +213,7 @@ public class GameBoardView extends JComponent{
     /**
      * @param g2d change bg colour
      */
-    private void clear(Graphics2D g2d) {
+    public void clear(Graphics2D g2d) {
         Color tmp = new Color(0, 0, 0);
         g2d.setColor(tmp);
         g2d.fillRect(0, 0, getWidth(), getHeight());
@@ -280,8 +280,7 @@ public class GameBoardView extends JComponent{
         GameBoardView.name = name;
 
 
-
-        ScoreboardFont = new Font("Monospaced", Font.PLAIN, TEXT_SIZE);
+        ScoreboardFont = new Font("TimesRoman", Font.PLAIN, TEXT_SIZE);
 
 
         obscureGameBoard(g2d);
@@ -295,9 +294,6 @@ public class GameBoardView extends JComponent{
         g2d.fill(ScoreboardFace);
         int y;
         g2d.setColor(Color.black);
-
-
-
 
         y=  70;
 
@@ -315,7 +311,7 @@ public class GameBoardView extends JComponent{
         csvread = new BufferedReader(new FileReader(a));
 
 
-        for(int i = 0; i < 10  ; i ++) {
+        for(int i = 0; i < 5  ; i ++) {
 
             y +=50 ;
             row = csvread.readLine();
@@ -335,6 +331,7 @@ public class GameBoardView extends JComponent{
             }
         }
 
+        g2d.drawString("press F key to restart game",60,400);
     }
 
     private void drawPauseMenu(Graphics2D g2d){
@@ -474,6 +471,13 @@ public class GameBoardView extends JComponent{
         this.message = message;
     }
 
+    public boolean isShowScoreboard() {
+        return showScoreboard;
+    }
+
+    public void setShowScoreboard(boolean showScoreboard) {
+        this.showScoreboard = showScoreboard;
+    }
 
     public void addKeyListenerfromGameboard(KeyListener keyEvent){
         this.addKeyListener(keyEvent);

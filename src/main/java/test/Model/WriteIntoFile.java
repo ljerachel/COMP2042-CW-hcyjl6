@@ -1,4 +1,4 @@
-package test;
+package test.Model;
 
 import test.Model.Wall;
 import test.View.GameBoardView;

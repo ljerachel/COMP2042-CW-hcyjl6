@@ -1,6 +1,8 @@
-package test;
+package test.Model;
 
 
+
+import test.Model.IndividualScores;
 
 import java.io.*;
 import java.util.ArrayList;

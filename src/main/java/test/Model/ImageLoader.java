@@ -1,4 +1,4 @@
-package test;
+package test.Model;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

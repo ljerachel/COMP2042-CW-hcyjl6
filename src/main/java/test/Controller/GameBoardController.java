@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import test.Model.Wall;
 import test.View.GameBoardView;
+import test.View.HomeMenu;
 
 
 import javax.swing.*;
@@ -44,6 +45,7 @@ private void initialize()
     @Override
     public void keyPressed(KeyEvent keyEvent) {
 
+
         switch(keyEvent.getKeyCode()){
             case KeyEvent.VK_A:
                 PlayerController.getInstance().moveLeft();
@@ -67,6 +69,17 @@ private void initialize()
             case KeyEvent.VK_F1:
                 if(keyEvent.isAltDown() && keyEvent.isShiftDown())
                     gameBoardView.getDebugConsole().setVisible(true);
+                break;
+
+            case KeyEvent.VK_F:
+                if(gameBoardView.isShowScoreboard()) {
+                    gameBoardView.setShowScoreboard(false);
+                    wall.setLifeCollected(false);
+                    wall.setShowWinningMsg(false);
+                    gameBoardView.getGameTimer().start();
+
+                    repaint();
+                }
             default:
                 PlayerController.getInstance().stop();
         }

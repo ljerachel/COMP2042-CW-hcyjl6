@@ -539,6 +539,10 @@ public class Wall {
     }
 
 
+    public void setLifeCollected(boolean lifeCollected) {
+        this.lifeCollected = lifeCollected;
+    }
+
     public BrickController[] getBricks() {
         return bricks;
     }

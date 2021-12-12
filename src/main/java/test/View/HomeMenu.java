@@ -125,7 +125,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     public void drawInstructions(Graphics2D g2d )
 
     {
-        InsFont = new Font("Monospaced", Font.PLAIN,20 );
+        InsFont = new Font("TimesRoman", Font.PLAIN,35 );
 
         FontRenderContext frc = g2d.getFontRenderContext();
         g2d.setFont(InsFont);
@@ -135,7 +135,6 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         Rectangle2D ScoreRect= InsFont.getStringBounds("hi",frc);
         Rectangle InsFace = new Rectangle(new Point(0, 0), new Dimension(600, 450));
         g2d.fill(InsFace);
-
 
 
         g2d.setColor(new Color(200, 150,100 ));
