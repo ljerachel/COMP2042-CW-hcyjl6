@@ -21,7 +21,7 @@ VERSION CONTROL - GITHUB
 commits and push are done after each meaningful change in the local file 
 
 JUNIT TEST 
-meaningful tests for:
+-meaningful tests for:
 Ball
 Brick
 Player
@@ -32,22 +32,21 @@ removal of unnecessary variables:
 BallModel- radius A and radius B - put into one variable radius 
 
 SOLID principles
-single responsibility:   
-Brick - crack class taken out 
+-single responsibility: Brick - crack class taken out 
 
 liskov substitution: 
-ball and bricks object can be substituted by the inherited classes instances
+-ball and bricks object can be substituted by the inherited classes instances
 
 DESIGN PRINCIPLES
 singleton: 
-Player controller class - player is only instantiated once, the constructor is set to private so the class cannot be instantiated in other claseses, the player controller object is referenced with getInstance() method 
+-Player controller class - player is only instantiated once, the constructor is set to private so the class cannot be instantiated in other claseses, the -player controller object is referenced with getInstance() method 
 
 Factory: 
-brickFactory - to facilitate modifying and additions to the type of bricks 
-ballFactory - to make it easier to be maintained and modified, especially in the case where there are different types of balls to be added.
+-brickFactory - to facilitate modifying and additions to the type of bricks 
+-ballFactory - to make it easier to be maintained and modified, especially in the case where there are different types of balls to be added.
 
 MVC 
-Ball, Brick, Player, Gameboard classes were split into Model, View, Controller
+-Ball, Brick, Player, Gameboard classes were split into Model, View, Controller
 
 
 ADDITIONS 
